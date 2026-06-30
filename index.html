@@ -1217,8 +1217,9 @@ If you cannot identify the plant at all, still return the JSON with your best gu
     document.querySelector('.form-screen-content').scrollTop = 300;
 
   } catch(e) {
-    status.innerHTML = '❌ Could not identify plant. Fill in the details manually below.';
+    status.innerHTML = `❌ <strong>Error:</strong> ${e.message || e.toString()}<br><small style="color:var(--text3)">This is likely a network/CORS issue or invalid JSON response — check browser console (F12) for details.</small>`;
     status.style.borderLeft = '3px solid var(--danger)';
+    console.error('Plant identify error:', e);
   }
 }
 
